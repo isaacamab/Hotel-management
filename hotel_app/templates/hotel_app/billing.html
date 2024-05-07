@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billing</title>
+    <style>
+        /* Internal CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Guest section styling */
+        .guest-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .guest-section h3 {
+            color: #555;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Billing</h2>
+
+    <!-- Loop through each guest -->
+    {% for guest, bills in grouped_bills.items %}
+    <div class="guest-section">
+        <h3>Billing Information for {{ guest.first_name }} {{ guest.last_name }}</h3>
+        <table>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Amount</th>
+                <th>Payment Status</th>
+                <th>Check-in Date</th>
+                <th>Check-out Date</th>
+            </tr>
+            <!-- Loop through each bill for the current guest -->
+            {% for bill in bills %}
+            <tr>
+                <td>{{ bill.reservation.id }}</td>
+                <td>${{ bill.amount }}</td>
+                <td>{{ bill.payment_status }}</td>
+                <td>{{ bill.reservation.check_in_date }}</td>
+                <td>{{ bill.reservation.check_out_date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+
+    <!-- Back to dashboard button -->
+    <a href="{% url 'dashboard' %}">
+        <button type="button">Back to Dashboard</button>
+    </a>
+</body>
+</html>

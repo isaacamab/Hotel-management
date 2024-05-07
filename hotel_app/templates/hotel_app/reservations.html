@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservations</title>
+    <style>
+        /* Internal CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Table styling */
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Adding reservation count display */
+        .reservation-count {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Reservations</h2>
+    <table>
+        <tr>
+            <th>Guest Name</th>
+            <th>Room Number</th>
+            <th>Check-in Date</th>
+            <th>Check-out Date</th>
+        </tr>
+        {% for reservation in reservations %}
+        <tr>
+            <td>{{ reservation.guest.first_name }} {{ reservation.guest.last_name }}</td>
+            <td>{{ reservation.room.room_number }}</td>
+            <td>{{ reservation.check_in_date }}</td>
+            <td>{{ reservation.check_out_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Displaying reservation count -->
+    <div class="reservation-count">
+        {% for room in rooms %}
+        <p>Room {{ room.room_number }} has {{ room.reservations.count }} reservation(s).</p>
+        {% endfor %}
+    </div>
+
+    <!-- Back to dashboard button -->
+    <a href="{% url 'dashboard' %}">
+        <button type="button">Back to Dashboard</button>
+    </a>
+</body>
+</html>

@@ -1,0 +1,147 @@
+/* General styling for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+/* Styling for the dashboard container */
+.dashboard-container {
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for headers */
+h1, h2 {
+    margin: 0;
+    padding-bottom: 10px;
+    color: #333;
+}
+
+/* Styling for cards */
+.card {
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s, opacity 0.3s;
+}
+
+.card h3 {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.card p {
+    margin: 0;
+}
+
+/* Card colors */
+.room-card {
+    background-color: #4CAF50; /* Green */
+}
+
+.guest-card {
+    background-color: #2196F3; /* Blue */
+}
+
+.reservation-card {
+    background-color: #FF9800; /* Orange */
+}
+
+.billing-card {
+    background-color: #9C27B0; /* Purple */
+}
+
+.staff-card {
+    background-color: #F44336; /* Red */
+}
+
+/* Card hover effects */
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+/* Styling for the sidebar */
+.sidebar {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    position: fixed;
+    width: 250px;
+    height: 100%;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+}
+
+/* Styling for the main content */
+.content {
+    margin-left: 270px; /* Adjusted for sidebar width and margin */
+    padding: 20px;
+}
+
+/* Styling for the footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+/* Navigation bar styles */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    margin: 0;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    margin-left: 20px;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}

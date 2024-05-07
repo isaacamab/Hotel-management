@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rooms</title>
+    <style>
+        /* Internal CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Table styling */
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Form styling */
+        .reservation-form {
+            margin-top: 20px;
+            text-align: left;
+            display: inline-block;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Rooms</h2>
+    <table>
+        <tr>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Status</th>
+            <th>Price per Night</th>
+            <th>Action</th>
+        </tr>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.room_number }}</td>
+            <td>{{ room.room_type }}</td>
+            <td>{{ room.status }}</td>
+            <td>${{ room.price_per_night }}</td>
+            <td>
+                <form class="reservation-form" method="post" action="{% url 'reserve_room' room.id %}">
+                    {% csrf_token %}
+                    <label for="date">Reservation Date:</label>
+                    <input type="date" name="date" id="date" required>
+                    
+                    <label for="time">Time of Day:</label>
+                    <select name="time" id="time" required>
+                        <option value="day">Day</option>
+                        <option value="night">Night</option>
+                        <option value="both">Both</option>
+                    </select>
+                    
+                    <button type="submit">Reserve</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'dashboard' %}">
+        <button type="button">Back to Dashboard</button>
+    </a>
+</body>
+</html>

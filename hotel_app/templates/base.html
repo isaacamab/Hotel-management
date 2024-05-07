@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Management</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <div class="navbar-title">
+            <h1>Hotel Management</h1>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="{% url 'dashboard' %}">Home</a></li>
+            <li><a href="{% url 'settings_page' %}">Settings</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+    
+
+    <!-- Main container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'rooms_page' %}">Rooms</a></li>
+                <li><a href="{% url 'guests_page' %}">Guests</a></li>
+                <li><a href="{% url 'reservations_page' %}">Reservations</a></li>
+                <li><a href="{% url 'billing_page' %}">Billing</a></li>
+                <li><a href="{% url 'staff_page' %}">Staff</a></li>
+            </ul>
+        </div>
+
+        <!-- Main content area -->
+        <div class="content">
+            {% block content %}
+            <!-- Content will be inserted here -->
+            {% endblock %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Hotel Management</p>
+    </footer>
+</body>
+</html>

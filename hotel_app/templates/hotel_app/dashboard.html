@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1>Hotel Management Dashboard</h1>
+
+    <!-- Rooms Card -->
+    <div class="card room-card" onclick="window.location.href='{% url 'rooms_page' %}'">
+        <h3>Rooms</h3>
+        <p>Number of rooms: {{ rooms.count }}</p>
+    </div>
+
+    <!-- Guests Card -->
+    <div class="card guest-card" onclick="window.location.href='{% url 'guests_page' %}'">
+        <h3>Guests</h3>
+        <p>Number of guests: {{ guests.count }}</p>
+    </div>
+
+    <!-- Reservations Card -->
+    <div class="card reservation-card" onclick="window.location.href='{% url 'reservations_page' %}'">
+        <h3>Reservations</h3>
+        <p>Number of reservations: {{ reservations.count }}</p>
+    </div>
+
+    <!-- Staff Card -->
+    <div class="card staff-card" onclick="window.location.href='{% url 'staff_page' %}'">
+        <h3>Staff</h3>
+        <p>Number of staff: {{ staff.count }}</p>
+    </div>
+
+    <!-- Billing Card -->
+    <div class="card billing-card" onclick="window.location.href='{% url 'billing_page' %}'">
+        <h3>Billing</h3>
+        <p>Total billing: ${{ total_billing }}</p>
+    </div>
+</div>
+{% endblock %}
